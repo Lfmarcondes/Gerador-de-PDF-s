@@ -53,6 +53,61 @@
   --color-emerald-700: #047857;
   --color-emerald-800: #065f46;
   --color-emerald-900: #064e3b;
+  
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+
+  --color-indigo-50: #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-700: #4338ca;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #312e81;
+
+  --color-violet-50: #f5f3ff;
+  --color-violet-100: #ede9fe;
+  --color-violet-200: #ddd6fe;
+  --color-violet-300: #c4b5fd;
+  --color-violet-400: #a78bfa;
+  --color-violet-500: #8b5cf6;
+  --color-violet-600: #7c3aed;
+  --color-violet-700: #6d28d9;
+  --color-violet-800: #5b21b6;
+  --color-violet-900: #4c1d95;
+
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
+  --color-zinc-600: #52525b;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
 
   /* Override Tailwind default shadows to use RGBA instead of OKLCH for html2canvas compatibility */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -64,34 +119,95 @@
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 @layer components {
   .pdf-page {
-    width: 794px;
-    height: 1123px;
-    padding: 40px;
-    box-sizing: border-box;
+    width: 1920px;
+    height: 1080px;
     overflow: hidden;
     position: relative;
-    background-color: var(--color-brand-gray);
+    box-sizing: border-box;
+    background-color: #ffffff;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    color: #1a1a1a;
   }
   
-  .pdf-page-content {
-    width: 100%;
-    flex: 1;
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  .pdf-title {
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+  }
+
+  .pdf-subtitle {
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: #4b5563;
+    max-width: 800px;
+  }
+
+  .pdf-body {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #374151;
+  }
+
+  /* Quality Control: Capture Mode Overrides */
+  .capture-mode [contenteditable] {
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .capture-mode .hover\:ring-2:hover {
+    ring-width: 0 !important;
+  }
+
+  .pdf-caption {
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+  }
+
+  .pdf-card {
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 24px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pdf-image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
   }
 
   .text-block {
     overflow: hidden;
-  }
-
-  .pdf-image {
-    max-width: 100%;
-    max-height: 300px;
-    object-fit: cover;
   }
 }
